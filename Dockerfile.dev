@@ -2,9 +2,13 @@ FROM python:alpine
 
 WORKDIR "/var/app"
 
-RUN pip install Flask
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
 
 COPY . .
+
+RUN pip install -e .
 
 ENV FLASK_APP flaskr
 
